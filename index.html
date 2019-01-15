@@ -10,38 +10,11 @@
     <script src="js/b/jquery.min.js"></script>
     <script src="js/b/bootstrap.min.js"></script>
     <body>
-        <p>Top basic examples</p>
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Collapsible Group Item #1
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
+            <div class="jumbotron" style="margin: 10px; padding: 10px; border-radius: 5px;">
+                    <h1>Monagas 12 horas</h1>
+                    <p>Prototipo para pruebas, si surge algun problema me pueden encontrar en el grupo de escaladores de Whatsapp</p>
+                    <p><a class="btn btn-primary btn-lg" href="https://github.com/MrLuiso/Monagas12Horas" role="button">Github Repo</a></p>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p>Firebase data displayed on accordion</p>
         <div id="container" class="panel-group" role="tablist" aria-multiselectable="true">
         </div>
     </body>
@@ -69,19 +42,29 @@
 
                     var titulo = rutas[i].titulo;
                     var grado = rutas[i].grado;
-                    console.log(titulo);
+                    var cls = rutas[i].class;
 
-                    container.innerHTML += "<div class=\"panel panel-default\">" +
-                    "<div class=\"panel-heading\" role=\"tab\" id=\"heading" + titulo + "\">" +
+                    container.innerHTML += "<div class=\"panel panel-default\" style=\"margin: 10px\">" +
+                    "<div class=\"panel-heading\" role=\"tab\" id=\"heading" + cls + "\">" +
                         "<h4 class=\"panel-title\">" +
-                            "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#container\" href=\"#"+ titulo +"\" aria-expanded=\"false\" aria-controls=\""+ titulo +"\">" + 
-                                titulo +
+                            "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#container\" href=\"#"+ cls +"\" aria-expanded=\"false\" aria-controls=\""+ cls +"\">" + 
+                                titulo + " " + grado +
                             "</a>" +
                         "</h4>" +
                     "</div>" +
-                    "<div id=\""+ titulo +"\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading" + titulo + "\">" +
+                    "<div id=\""+ cls +"\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading" + cls + "\">" +
                         "<div class=\"panel-body\">" +
-                            grado +
+                            //Button
+                            "<div class=\"btn-group\">" +
+                                "<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">" +
+                                    "Not Climbed <span class=\"caret\"></span>" + 
+                                "</button>" + 
+                                "<ul class=\"dropdown-menu\">" +
+                                    "<li><a href=\"#\">Lead</a></li>" +
+                                    "<li><a href=\"#\">TopRope</a></li>" +
+                                "</ul>" +
+                            "</div>" +
+                            //End Button
                         "</div>" +
                     "</div>" + 
                 "</div>";
