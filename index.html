@@ -15,7 +15,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Collapsible Group Item #1
                         </a>
                     </h4>
@@ -59,26 +59,33 @@
             var database = firebase.database();
 
             firebase.database().ref().once('value').then(function(snapshot) {
-                console.log(snapshot.val().LaEscalera);
-                var value = snapshot.val().LaEscalera;
+
 
                 var rutas = snapshot.val().Areas.LaEscalera;
+                console.log(rutas);
 
                 var container = document.getElementById("container");
-                container.innerHTML = "<div class=\"panel panel-default\">" +
-                    "<div class=\"panel-heading\" role=\"tab\" id=\"headingThree\">" +
+                for(var i in rutas){
+
+                    var titulo = rutas[i].titulo;
+                    var grado = rutas[i].grado;
+                    console.log(titulo);
+
+                    container.innerHTML += "<div class=\"panel panel-default\">" +
+                    "<div class=\"panel-heading\" role=\"tab\" id=\"heading" + titulo + "\">" +
                         "<h4 class=\"panel-title\">" +
-                            "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">" + 
-                                value +
+                            "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#container\" href=\"#"+ titulo +"\" aria-expanded=\"false\" aria-controls=\""+ titulo +"\">" + 
+                                titulo +
                             "</a>" +
                         "</h4>" +
                     "</div>" +
-                    "<div id=\"collapseThree\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"headingThree\">" +
+                    "<div id=\""+ titulo +"\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"heading" + titulo + "\">" +
                         "<div class=\"panel-body\">" +
-                            "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS." +
+                            grado +
                         "</div>" +
                     "</div>" + 
                 "</div>";
+                }   
             });
         </script>
 </html>
