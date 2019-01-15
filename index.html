@@ -5,8 +5,10 @@
         <link href="css/bootstrap-theme.css" rel="stylesheet" />
 
     </head>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    
+    <script src="js/b/jquery.min.js"></script>
+    <script src="js/b/bootstrap.min.js"></script>
     <body>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
@@ -37,20 +39,44 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div id="container" class="panel-group" role="tablist" aria-multiselectable="true">
         </div>
     </body>
+    <script>
+            var config = {
+                apiKey: "AIzaSyDFUczBZ-3jsP4Z_McUzmjz9GWrxwEzqhY",
+                authDomain: "monagas12horas.firebaseapp.com",
+                databaseURL: "https://monagas12horas.firebaseio.com",
+                projectId: "monagas12horas",
+                storageBucket: "monagas12horas.appspot.com",
+                messagingSenderId: "740175164711"
+            };
+            firebase.initializeApp(config);
+
+            var database = firebase.database();
+
+            firebase.database().ref().once('value').then(function(snapshot) {
+                console.log(snapshot.val().LaEscalera);
+                var value = snapshot.val().LaEscalera;
+
+                var rutas = snapshot.val().Areas.LaEscalera;
+
+                var container = document.getElementById("container");
+                container.innerHTML = "<div class=\"panel panel-default\">" +
+                    "<div class=\"panel-heading\" role=\"tab\" id=\"headingThree\">" +
+                        "<h4 class=\"panel-title\">" +
+                            "<a class=\"collapsed\" role=\"button\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">" + 
+                                value +
+                            "</a>" +
+                        "</h4>" +
+                    "</div>" +
+                    "<div id=\"collapseThree\" class=\"panel-collapse collapse\" role=\"tabpanel\" aria-labelledby=\"headingThree\">" +
+                        "<div class=\"panel-body\">" +
+                            "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS." +
+                        "</div>" +
+                    "</div>" + 
+                "</div>";
+            });
+        </script>
 </html>
